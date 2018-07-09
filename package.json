@@ -1,0 +1,63 @@
+{
+  "name": "solidity-comments-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "^8.10.0"
+  },
+  "scripts": {
+    "dev": "babel-node src/index.es6",
+    "lint": "eslint src/**/*.es6",
+    "build": "babel src --ignore *.test.*,*.sol --copy-files --source-maps --out-file dist/index.js",
+    "compile": "babel src -d build --copy-files",
+    "test": "babel-tape-runner \"src/**/*.test.es6\" | node_modules/.bin/tap-spec",
+    "coverage": "NODE_ENV=test nyc ./node_modules/.bin/babel-tape-runner \"src/**/*.test.es6\"",
+    "prepublish": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodefactoryio/solidity-comments-core.git"
+  },
+  "keywords": [
+    "module",
+    "npm",
+    "starter",
+    "boilerplate",
+    "babel",
+    "es6",
+    "tape",
+    "istanbul"
+  ],
+  "contributors": [
+    "Belma Gutlić <belma@nodefactory.io>",
+    "Marin Petrunić <marin@nodefactory.io>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.5",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "babel-tape-runner": "^2.0.1",
+    "eslint": "^5.0.1",
+    "eslint-config-strongloop": "^2.1.0",
+    "istanbul": "^0.4.5",
+    "nyc": "^12.0.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
+  },
+  "dependencies": {},
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "include": [
+      "src/**"
+    ],
+    "exclude": [
+      "src/**/*.test.*"
+    ]
+  }
+}
