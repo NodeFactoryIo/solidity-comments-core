@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "babel-node src/index.es6",
     "lint": "eslint src/**/*.es6",
-    "build": "babel src --ignore *.test.*,*.sol --copy-files --source-maps --out-file dist/index.js",
+    "build": "babel src --ignore *.test.*,*.sol --copy-files --source-maps --out-dir dist",
     "compile": "babel src -d build --copy-files",
     "test": "babel-tape-runner \"src/**/*.test.es6\" | node_modules/.bin/tap-spec",
     "coverage": "NODE_ENV=test nyc ./node_modules/.bin/babel-tape-runner \"src/**/*.test.es6\"",
