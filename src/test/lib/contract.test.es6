@@ -1,0 +1,60 @@
+import test from 'tape';
+import { Contract } from '../../lib/contract';
+
+test('Assert creating instance with array of lines', (t) => {
+  t.plan(1);
+  let contract = new Contract(['line1', 'line2']);
+  t.equal(contract.getLineCount(), 2);
+});
+
+test('Assert creating instance with text', (t) => {
+  t.plan(1);
+  let contract = new Contract('line1\nline2');
+  t.equal(contract.getLineCount(), 2);
+});
+
+test('Assert reset Contract position', (t) => {
+  t.plan(2);
+  let contract = new Contract(['line1', 'line2']);
+  contract.getNextLine();
+  t.equal(contract.getPosition(), 1);
+  contract.reset();
+  t.equal(contract.getPosition(), 0);
+});
+
+test('Assert get next line', (t) => {
+  t.plan(1);
+  let contract = new Contract(['line1', 'line2']);
+  const line = contract.getNextLine();
+  t.equal(line, 'line1');
+});
+
+test('Assert get next line when index out of range', (t) => {
+  t.plan(1);
+  let contract = new Contract(['line1', 'line2']);
+  contract.setPosition(99999);
+  const line = contract.getNextLine();
+  t.equal(line, null);
+});
+
+test('Assert remove line', (t) => {
+  t.plan(1);
+  let contract = new Contract(['line1', 'line2']);
+  contract.removeLine(0);
+  t.equal(contract.getNextLine(), 'line2');
+});
+
+test('Insert single line before', (t) => {
+  t.plan(1);
+  let contract = new Contract(['line1', 'line2']);
+  contract.insertLinesBefore(['test'], 'line1');
+  t.equal(contract.getNextLine(), 'test');
+});
+
+test('Insert text before', (t) => {
+  t.plan(2);
+  let contract =new Contract(['line1', 'line2']);
+  contract.insertTextBefore('test1\nbla', 'line1');
+  t.equal(contract.getNextLine(), 'test1');
+  t.equal(contract.getNextLine(), 'bla');
+});
