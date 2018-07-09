@@ -13,6 +13,7 @@
     "compile": "babel src -d build --copy-files",
     "test": "babel-tape-runner \"src/**/*.test.es6\" | node_modules/.bin/tap-spec",
     "coverage": "NODE_ENV=test nyc ./node_modules/.bin/babel-tape-runner \"src/**/*.test.es6\"",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "prepublish": "yarn build"
   },
   "repository": {
@@ -41,6 +42,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "babel-tape-runner": "^2.0.1",
+    "coveralls": "^3.0.2",
     "eslint": "^5.0.1",
     "eslint-config-strongloop": "^2.1.0",
     "istanbul": "^0.4.5",
