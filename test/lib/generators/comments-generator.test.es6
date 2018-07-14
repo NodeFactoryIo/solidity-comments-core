@@ -72,3 +72,60 @@ test('Assert modifier comment is generated with author and params', (t) => {
     '/// @param test2\n'
   );
 });
+
+test('Assert modifier comment is generated without author and params', (t) => {
+  t.plan(1);
+  let comment = generator.generate({
+    type: ContractParts.MODIFIER,
+  });
+  t.equal(comment, '/// @dev\n');
+});
+
+test('Assert private function comment is generated with author and params',
+  (t) => {
+    t.plan(1);
+    let comment = generator.generate({
+      type: ContractParts.PRIVATE_FUNCTION,
+      author: 'Marin',
+      params: [
+        {
+          name: 'test1',
+        },
+        {
+          name: 'test2',
+        },
+      ],
+    });
+    t.equal(comment,
+      '/// @author Marin\n' +
+    '/// @dev\n' +
+    '/// @param test1\n' +
+    '/// @param test2\n' +
+    '/// @return'
+    );
+  });
+
+test('Assert public function comment is generated with author and params',
+  (t) => {
+    t.plan(1);
+    let comment = generator.generate({
+      type: ContractParts.PUBLIC_FUNCTION,
+      author: 'Marin',
+      params: [
+        {
+          name: 'test1',
+        },
+        {
+          name: 'test2',
+        },
+      ],
+    });
+    t.equal(comment,
+      '/// @author Marin\n' +
+      '/// @notice\n' +
+      '/// @dev\n' +
+      '/// @param test1\n' +
+      '/// @param test2\n' +
+      '/// @return'
+    );
+  });
