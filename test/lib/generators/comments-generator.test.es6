@@ -129,3 +129,30 @@ test('Assert public function comment is generated with author and params',
       '/// @return'
     );
   });
+
+test('Assert event comment is empty',
+  (t) => {
+    t.plan(1);
+    let comment = generator.generate({
+      type: ContractParts.EVENT,
+    });
+    t.equal(comment, '');
+  });
+
+test('Assert pragma comment is empty',
+  (t) => {
+    t.plan(1);
+    let comment = generator.generate({
+      type: ContractParts.PRAGMA,
+    });
+    t.equal(comment, '');
+  });
+
+test('Assert undefined element comment is empty',
+  (t) => {
+    t.plan(1);
+    let comment = generator.generate({
+      type: 'test',
+    });
+    t.equal(comment, '');
+  });
