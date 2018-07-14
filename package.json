@@ -11,8 +11,8 @@
     "lint": "eslint src/**/*.es6",
     "build": "babel src --ignore *.test.*,*.sol --copy-files --source-maps --out-dir dist",
     "compile": "babel src -d build --copy-files",
-    "test": "babel-tape-runner \"src/**/*.test.es6\" | node_modules/.bin/tap-spec",
-    "coverage": "NODE_ENV=test nyc ./node_modules/.bin/babel-tape-runner \"src/**/*.test.es6\"",
+    "test": "babel-tape-runner \"test/**/*.test.es6\" | node_modules/.bin/tap-spec",
+    "coverage": "NODE_ENV=test nyc ./node_modules/.bin/babel-tape-runner \"test/**/*.test.es6\"",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "prepublish": "yarn build"
   },
@@ -50,7 +50,9 @@
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "mustache": "^2.3.0"
+  },
   "nyc": {
     "require": [
       "babel-register"
