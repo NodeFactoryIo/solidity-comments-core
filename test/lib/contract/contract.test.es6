@@ -1,5 +1,5 @@
 import test from 'tape';
-import { Contract } from '../../lib/contract';
+import { Contract } from '../../../src/lib/contract/contract';
 
 test('Assert creating instance with array of lines', (t) => {
   t.plan(1);

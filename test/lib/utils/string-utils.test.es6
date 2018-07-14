@@ -1,5 +1,5 @@
 import test from 'tape';
-import * as stringUtils from '../../../lib/utils/string-utils';
+import * as stringUtils from '../../../src/lib/utils/string-utils';
 
 test('Assert single line text is padded with 2 spaces', (t) => {
   t.plan(1);
