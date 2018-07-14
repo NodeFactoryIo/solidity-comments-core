@@ -1,12 +1,7 @@
-'use strict';
+export function generateCommentsFromText(text, config = {}) {
+  return '';
+}
 
-const name = 'ES6 Starter Kit',
-  version = '1.0';
-
-const myObject = {
-  name,
-  version
-};
-
-
-export default myObject;
+export function generateCommentsFromFile(path, config = {}) {
+  return '';
+}
