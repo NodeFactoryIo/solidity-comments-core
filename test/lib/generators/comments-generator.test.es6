@@ -87,14 +87,16 @@ test('Assert function comment is generated with author and params',
     let comment = generator.generate({
       type: ContractParts.FUNCTION,
       author: 'Marin',
-      params: [
-        {
-          name: 'test1',
-        },
-        {
-          name: 'test2',
-        },
-      ],
+      parameters: {
+        parameters: [
+          {
+            name: 'test1',
+          },
+          {
+            name: 'test2',
+          },
+        ],
+      },
     });
     t.equal(comment,
       '/// @author Marin\n' +

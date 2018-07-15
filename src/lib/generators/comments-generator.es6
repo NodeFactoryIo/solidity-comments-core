@@ -48,6 +48,7 @@ export default class CommentsGenerator {
         return '';
       }
       case ContractParts.FUNCTION: {
+        item.params = this.extractParamNames(item);
         return this.generateComment(
           this.getFunctionTemplate(),
           item
@@ -86,4 +87,11 @@ export default class CommentsGenerator {
     return this.getTemplate('../../spec/contract.mustache');
   }
 
+  extractParamNames(item) {
+    let params = [];
+    item.parameters.parameters.forEach((paramObj) => {
+      params.push({name: paramObj.name});
+    });
+    return params;
+  }
 }
