@@ -5,23 +5,23 @@ pragma solidity ^0.4.24;
 /// @notice
 /// @dev
 contract MetaCoin {
-/// @notice
+    /// @notice
     mapping (address => uint) balances;
 
     event Transfer(address _from,address _to, uint _amount);
 
-/// @notice
-/// @dev
-/// @return
+    /// @notice
+    /// @dev
+    /// @return
     constructor() {
         balances[tx.origin] = 10000;
     }
 
-/// @notice
-/// @dev
-/// @param receiver
-/// @param amount
-/// @return
+    /// @notice
+    /// @dev
+    /// @param receiver
+    /// @param amount
+    /// @return
     function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
         if (balances[msg.sender] < amount) return false;
         address myAddress = this;
@@ -31,10 +31,10 @@ contract MetaCoin {
         return true;
     }
 
-/// @notice
-/// @dev
-/// @param addr
-/// @return
+    /// @notice
+    /// @dev
+    /// @param addr
+    /// @return
     function getBalance(address addr) public returns(uint) {
         return balances[addr];
     }
