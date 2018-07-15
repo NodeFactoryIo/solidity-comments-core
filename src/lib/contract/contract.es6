@@ -7,6 +7,7 @@ export class Contract {
       this.lines = text.split('\n');
     }
     this.pos = 0;
+    this.offsets = {};
   }
 
   reset() {
@@ -41,14 +42,33 @@ export class Contract {
   }
 
   insertLinesBefore(lines, line) {
-    let index = this.lines.indexOf(line);
-    this.lines.splice(index, 0, ...lines);
+    line += this.offset(line);
+    this.addOffset(line, lines.length);
+    this.lines.splice(line, 0, ...lines);
   }
 
   insertTextBefore(text, line) {
-    let index = this.lines.indexOf(line);
     let lines = text.split('\n');
-    this.lines.splice(index, 0, ...lines);
+    this.insertLinesBefore(lines, line);
   }
 
+  getText() {
+    return this.lines.join('\n');
+  }
+
+  addOffset(line, offset) {
+    this.offsets[line] = offset;
+  }
+
+  offset(line) {
+    let offsetAmount = 0;
+    for (let offset in this.offsets) {
+      if (this.offsets.hasOwnProperty(offset)) {
+        if (line >= offset) {
+          offsetAmount += this.offsets[offset];
+        }
+      }
+    }
+    return offsetAmount;
+  }
 }

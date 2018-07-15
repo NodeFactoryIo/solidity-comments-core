@@ -47,14 +47,25 @@ test('Assert remove line', (t) => {
 test('Insert single line before', (t) => {
   t.plan(1);
   let contract = new Contract(['line1', 'line2']);
-  contract.insertLinesBefore(['test'], 'line1');
+  contract.insertLinesBefore(['test'], 0);
   t.equal(contract.getNextLine(), 'test');
 });
 
 test('Insert text before', (t) => {
   t.plan(2);
   let contract =new Contract(['line1', 'line2']);
-  contract.insertTextBefore('test1\nbla', 'line1');
+  contract.insertTextBefore('test1\nbla', 0);
   t.equal(contract.getNextLine(), 'test1');
   t.equal(contract.getNextLine(), 'bla');
+});
+
+test('Insert text before with offset', (t) => {
+  t.plan(4);
+  let contract =new Contract(['line1', 'line2']);
+  contract.insertTextBefore('test1\nbla', 0);
+  t.equal(contract.getNextLine(), 'test1');
+  t.equal(contract.getNextLine(), 'bla');
+  contract.insertTextBefore('offset', 0);
+  t.equal(contract.getNextLine(), 'offset');
+  t.equal(contract.offset(0), 2);
 });
