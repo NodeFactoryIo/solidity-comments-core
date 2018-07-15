@@ -56,6 +56,10 @@ export class Contract {
     return this.lines.join('\n');
   }
 
+  getLineAt(pos) {
+    return this.lines[pos];
+  }
+
   addOffset(line, offset) {
     this.offsets[line] = offset;
   }

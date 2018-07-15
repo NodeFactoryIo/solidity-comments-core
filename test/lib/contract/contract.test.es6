@@ -48,7 +48,7 @@ test('Insert single line before', (t) => {
   t.plan(1);
   let contract = new Contract(['line1', 'line2']);
   contract.insertLinesBefore(['test'], 0);
-  t.equal(contract.getNextLine(), 'test');
+  t.equal(contract.getLineAt(0), 'test');
 });
 
 test('Insert text before', (t) => {
@@ -63,9 +63,9 @@ test('Insert text before with offset', (t) => {
   t.plan(4);
   let contract =new Contract(['line1', 'line2']);
   contract.insertTextBefore('test1\nbla', 0);
-  t.equal(contract.getNextLine(), 'test1');
-  t.equal(contract.getNextLine(), 'bla');
+  t.equal(contract.getLineAt(0), 'test1');
+  t.equal(contract.getLineAt(1), 'bla');
   contract.insertTextBefore('offset', 0);
-  t.equal(contract.getNextLine(), 'offset');
   t.equal(contract.offset(0), 2);
+  t.equal(contract.getLineAt(2), 'offset');
 });
