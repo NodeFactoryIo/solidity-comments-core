@@ -1,11 +1,10 @@
 const ContractParts = Object.freeze({
-  PRAGMA: 'pragma',
-  CONTRACT: 'contract',
-  GLOBAL_VARIABLE: 'globalVariable',
-  MODIFIER: 'modifier',
-  EVENT: 'event',
-  PUBLIC_FUNCTION: 'publicFunction',
-  PRIVATE_FUNCTION: 'privateFunction',
+  PRAGMA: 'PragmaDirective',
+  CONTRACT: 'ContractDefinition',
+  GLOBAL_VARIABLE: 'StateVariableDeclaration',
+  MODIFIER: 'ModifierDefinition',
+  EVENT: 'eventDefinition',
+  FUNCTION: 'FunctionDefinition',
 });
 
 export default ContractParts;
