@@ -42,5 +42,5 @@ function insertComment(contract, node) {
   if (!comment) return;
   let commentLines = comment.split('\n');
   // TODO: generate padding
-  contract.insertLinesBefore(commentLines, node.loc.start.line);
+  contract.insertLinesBefore(commentLines, node.loc.start.line - 1);
 }
