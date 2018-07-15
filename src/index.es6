@@ -12,7 +12,8 @@ export function generateCommentsFromText(text, config = {}) {
 
 export function generateCommentsFromFile(path, config = {}) {
   let contract = new ContractFile(path);
-  return generate(contract, config);
+  generate(contract, config);
+  contract.save();
 }
 
 function generate(contract, config) {
