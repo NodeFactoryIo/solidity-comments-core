@@ -8,7 +8,7 @@ test('Assert contract comment is generated with author', (t) => {
   t.plan(1);
   let comment = generator.generate({
     type: ContractParts.CONTRACT,
-    contractName: 'TestContract',
+    name: 'TestContract',
     author: 'Marin',
   });
   t.equal(comment,
@@ -22,7 +22,7 @@ test('Assert contract comment is generated with empty author', (t) => {
   t.plan(1);
   let comment = generator.generate({
     type: ContractParts.CONTRACT,
-    contractName: 'TestContract',
+    name: 'TestContract',
     author: '',
   });
   t.equal(comment,
@@ -35,7 +35,7 @@ test('Assert contract comment is generated without author', (t) => {
   t.plan(1);
   let comment = generator.generate({
     type: ContractParts.CONTRACT,
-    contractName: 'TestContract',
+    name: 'TestContract',
   });
   t.equal(comment,
     '/// @title TestContract\n' +
@@ -81,35 +81,11 @@ test('Assert modifier comment is generated without author and params', (t) => {
   t.equal(comment, '/// @dev\n');
 });
 
-test('Assert private function comment is generated with author and params',
+test('Assert function comment is generated with author and params',
   (t) => {
     t.plan(1);
     let comment = generator.generate({
-      type: ContractParts.PRIVATE_FUNCTION,
-      author: 'Marin',
-      params: [
-        {
-          name: 'test1',
-        },
-        {
-          name: 'test2',
-        },
-      ],
-    });
-    t.equal(comment,
-      '/// @author Marin\n' +
-    '/// @dev\n' +
-    '/// @param test1\n' +
-    '/// @param test2\n' +
-    '/// @return'
-    );
-  });
-
-test('Assert public function comment is generated with author and params',
-  (t) => {
-    t.plan(1);
-    let comment = generator.generate({
-      type: ContractParts.PUBLIC_FUNCTION,
+      type: ContractParts.FUNCTION,
       author: 'Marin',
       params: [
         {

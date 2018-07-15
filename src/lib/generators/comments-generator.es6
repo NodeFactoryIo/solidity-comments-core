@@ -16,10 +16,7 @@ export default class CommentsGenerator {
       this.getModifierTemplate()
     );
     Mustache.parse(
-      this.getPrivateFunctionTemplate()
-    );
-    Mustache.parse(
-      this.getPublicFunctionTemplate()
+      this.getFunctionTemplate()
     );
   }
 
@@ -50,15 +47,9 @@ export default class CommentsGenerator {
       case ContractParts.PRAGMA: {
         return '';
       }
-      case ContractParts.PRIVATE_FUNCTION: {
+      case ContractParts.FUNCTION: {
         return this.generateComment(
-          this.getPrivateFunctionTemplate(),
-          item
-        );
-      }
-      case ContractParts.PUBLIC_FUNCTION: {
-        return this.generateComment(
-          this.getPublicFunctionTemplate(),
+          this.getFunctionTemplate(),
           item
         );
       }
@@ -79,12 +70,8 @@ export default class CommentsGenerator {
     );
   }
 
-  getPublicFunctionTemplate() {
-    return this.getTemplate('../../spec/public_function.mustache');
-  }
-
-  getPrivateFunctionTemplate() {
-    return this.getTemplate('../../spec/private_function.mustache');
+  getFunctionTemplate() {
+    return this.getTemplate('../../spec/function.mustache');
   }
 
   getModifierTemplate() {
