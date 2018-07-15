@@ -51,7 +51,8 @@
     "tape": "^4.9.1"
   },
   "dependencies": {
-    "mustache": "^2.3.0"
+    "mustache": "^2.3.0",
+    "solidity-parser-antlr": "^0.3.0"
   },
   "nyc": {
     "require": [
