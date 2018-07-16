@@ -60,6 +60,10 @@ export class Contract {
     return this.lines[pos];
   }
 
+  getOriginalLineAt(pos) {
+    return this.lines[pos + this.offset(pos)];
+  }
+
   addOffset(line, offset) {
     this.offsets[line] = offset;
   }

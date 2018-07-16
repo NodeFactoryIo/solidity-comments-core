@@ -69,3 +69,18 @@ test('Insert text before with offset', (t) => {
   t.equal(contract.offset(0), 2);
   t.equal(contract.getLineAt(2), 'offset');
 });
+
+
+test('Assert get line at', (t) => {
+  t.plan(1);
+  let contract =new Contract(['line1', 'line2']);
+  contract.insertTextBefore('test1\nbla', 0);
+  t.equal(contract.getLineAt(1), 'bla');
+});
+
+test('Assert get original line at', (t) => {
+  t.plan(1);
+  let contract =new Contract(['line1', 'line2']);
+  contract.insertTextBefore('test1\nbla', 0);
+  t.equal(contract.getOriginalLineAt(1), 'line2');
+});
