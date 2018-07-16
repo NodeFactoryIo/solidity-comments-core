@@ -40,10 +40,18 @@ function getVisitors(contract) {
   return visitors;
 }
 
+function isTab(originalLineAt) {
+  return originalLineAt.startsWith('\t');
+}
+
 function insertComment(contract, node) {
   let comment = generator.generate(node);
   if (!comment) return;
   let commentLines = comment.split('\n');
-  commentLines = pad(node.loc.start.column, commentLines, false);
+  commentLines = pad(
+    node.loc.start.column,
+    commentLines,
+    isTab(contract.getOriginalLineAt(node.loc.start.line - 1))
+  );
   contract.insertLinesBefore(commentLines, node.loc.start.line - 1);
 }
