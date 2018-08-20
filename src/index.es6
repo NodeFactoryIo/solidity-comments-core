@@ -43,9 +43,23 @@ function isTab(originalLineAt) {
   return originalLineAt.startsWith('\t');
 }
 
+function hasComment(contract, line) {
+  let counter = 1;
+  while (true) {
+    counter++;
+    let lineText = contract.getOriginalLineAt(line - counter);
+    if (lineText === undefined) return false;
+    lineText = lineText.trim();
+    if (lineText.startsWith('*') || lineText.startsWith('//')) return true;
+    if (!lineText.replace(/\s/g, '').length) continue;
+    return false;
+  }
+}
+
 function insertComment(contract, node) {
   let comment = generator.generate(node);
   if (!comment) return;
+  if (hasComment(contract, node.loc.start.line)) return;
   let commentLines = comment.split('\n');
   commentLines = pad(
     node.loc.start.column,
