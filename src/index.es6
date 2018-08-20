@@ -3,7 +3,6 @@ import { ContractFile } from './lib/contract/contract-file';
 import { Contract } from './lib/contract/contract';
 import CommentsGenerator from './lib/generators/comments-generator';
 import ContractParts from './lib/contract-parts.es6';
-import * as stringUtils from './lib/utils/string-utils';
 import { pad } from './lib/utils/string-utils';
 
 const generator = new CommentsGenerator();

@@ -2,3 +2,9 @@
 ![build status](https://travis-ci.org/NodeFactoryIo/solidity-comments-core.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/NodeFactoryIo/solidity-comments-core/badge.svg?branch=master)](https://coveralls.io/github/NodeFactoryIo/solidity-comments-core?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+-----------------------
+
+Simple library that parses solidity contracts and inserts default solidity comments based on natspec.
+
+## Development
+Pull code, run `yarn install`, write tests :)
