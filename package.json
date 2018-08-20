@@ -1,5 +1,5 @@
 {
-  "name": "solidity-comments-core",
+  "name": "@nodefactory/solidity-comments-core",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
