@@ -57,7 +57,7 @@ function hasComment(contract, line) {
 }
 
 function insertComment(contract, node) {
-  let comment = generator.generate(node);
+  let comment = generator.generate(node).trim();
   if (!comment) return;
   if (hasComment(contract, node.loc.start.line)) return;
   let commentLines = comment.split('\n');
