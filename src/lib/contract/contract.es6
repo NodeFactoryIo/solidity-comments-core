@@ -72,9 +72,7 @@ export class Contract {
     let offsetAmount = 0;
     for (let offset in this.offsets) {
       if (this.offsets.hasOwnProperty(offset)) {
-        if (line >= offset) {
-          offsetAmount += this.offsets[offset];
-        }
+        offsetAmount += this.offsets[offset];
       }
     }
     return offsetAmount;
