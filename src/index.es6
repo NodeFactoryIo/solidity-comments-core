@@ -56,11 +56,52 @@ function hasComment(contract, line) {
   }
 }
 
+function updateComment(contract, commentLines, line) {
+  if (hasComment(contract,line)) {
+
+    let newCommentsParams = [];
+    let newCommentsMap = commentLines.reduce(function(map, obj) {
+      let key = obj.match(/\/\/\/ @([a-zA-Z]*)\b/g)[0];
+      if(key === "/// @param") {
+        newCommentsParams.push(obj);
+      } else map[key] = obj;
+      return map;
+    }, {});
+
+    let oldCommentsParams = [];
+    let oldCommentsMap = {};
+    let oldCommentPosition = line - 2;
+    while (true) {
+      let comment = contract.getLineAt(oldCommentPosition);
+      if(comment.startsWith('/// @param')) {
+        oldCommentsParams.push(comment)
+      } else if(comment.startsWith('//')) {
+        oldCommentsMap[comment.match(/\/\/\/ @([a-zA-Z]*)\b/g)[0]] = comment
+      } else break;
+    }
+
+    return true;
+  }
+  //   let offsetCounter = commentLines.length + 1;
+  //   for(let l of commentLines) {
+  //     let currentLine = line - offsetCounter;
+  //     let currentComment = contract.getLineAt(currentLine).trim();
+  //     if (currentComment.startsWith('/// @param') && l.trim().startsWith('/// @param')) {
+  //       contract.removeLine(currentLine);
+  //       contract.insertLinesBefore(l.split(), currentLine);
+  //     }
+  //     offsetCounter--;
+  //   }
+  //   return true;
+  // }
+  return false;
+}
+
 function insertComment(contract, node) {
   let comment = generator.generate(node);
   if (!comment) return;
-  if (hasComment(contract, node.loc.start.line)) return;
   let commentLines = comment.split('\n');
+  if (updateComment(contract, commentLines, node.loc.start.line)) return;
   commentLines = pad(
     node.loc.start.column,
     commentLines,
