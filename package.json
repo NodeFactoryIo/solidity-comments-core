@@ -38,6 +38,7 @@
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/register": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.5",
     "babel-plugin-istanbul": "^4.1.6",
@@ -54,7 +55,6 @@
     "tape": "^4.9.1"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
     "mustache": "^2.3.0",
     "solidity-parser-antlr": "^0.3.0"
   },
