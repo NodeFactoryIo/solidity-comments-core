@@ -42,7 +42,8 @@ export class Contract {
   }
 
   insertLinesBefore(lines, line) {
-    line += this.offset(line);
+    let currentOffset = this.offset(line);
+    line += this.offset(line + currentOffset);
     this.addOffset(line, lines.length);
     this.lines.splice(line, 0, ...lines);
   }
@@ -72,11 +73,10 @@ export class Contract {
     let offsetAmount = 0;
     for (let offset in this.offsets) {
       if (this.offsets.hasOwnProperty(offset)) {
-        if (line >= offset) {
-          offsetAmount += this.offsets[offset];
-        }
+          if (line >= offset)
+              offsetAmount += this.offsets[offset];
+          }
       }
-    }
     return offsetAmount;
   }
 }
