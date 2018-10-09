@@ -36,6 +36,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/register": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.5",
     "babel-plugin-istanbul": "^4.1.6",
@@ -43,6 +46,7 @@
     "babel-register": "^6.26.0",
     "babel-tape-runner": "^2.0.1",
     "coveralls": "^3.0.2",
+    "electron": "^3.0.2",
     "eslint": "^5.0.1",
     "eslint-config-strongloop": "^2.1.0",
     "istanbul": "^0.4.5",
