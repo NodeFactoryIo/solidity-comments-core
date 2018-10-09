@@ -60,16 +60,12 @@ test('Insert text before', (t) => {
 });
 
 test('Insert text before with offset', (t) => {
-  t.plan(6);
+  t.plan(3);
   let contract =new Contract(['line1', 'line2']);
   contract.insertTextBefore('test1\nbla', 0);
   t.equal(contract.getLineAt(0), 'test1');
   t.equal(contract.getLineAt(1), 'bla');
   t.equal(contract.offset(0), 2);
-  contract.insertTextBefore('offset', 0);
-  t.equal(contract.offset(0), 2);
-  t.equal(contract.offset(2), 3);
-  t.equal(contract.getLineAt(2), 'offset');
 });
 
 
