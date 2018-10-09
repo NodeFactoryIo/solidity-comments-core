@@ -65,7 +65,7 @@ test('Insert text before with offset', (t) => {
   contract.insertTextBefore('test1\nbla', 0);
   t.equal(contract.getLineAt(0), 'test1');
   t.equal(contract.getLineAt(1), 'bla');
-  contract.insertTextBefore('offset', 0);
+  contract.insertLinesBefore('offset'.split(), 0);
   t.equal(contract.offset(0), 2);
   t.equal(contract.getLineAt(2), 'offset');
 });
