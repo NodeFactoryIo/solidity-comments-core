@@ -6,5 +6,9 @@
     "es6": true,
     "node": true
   },
-  "extends": "strongloop"
+  "extends": "strongloop",
+  "rules": {
+    "max-len": [2, 120, 8],
+    "no-console": 2
+  }
 }

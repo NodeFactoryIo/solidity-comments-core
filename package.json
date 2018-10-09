@@ -11,6 +11,7 @@
     "lint": "eslint src/**/*.es6",
     "build": "babel src --ignore *.test.*,*.sol --copy-files --source-maps --out-dir dist",
     "compile": "babel src -d build --copy-files",
+    "pretest": "npm run lint",
     "test": "babel-tape-runner \"test/**/*.test.es6\" | node_modules/.bin/tap-spec",
     "coverage": "NODE_ENV=test nyc ./node_modules/.bin/babel-tape-runner \"test/**/*.test.es6\"",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
