@@ -47,7 +47,7 @@ function updateComment(contract, commentLines, location) {
             } else map[key] = obj;
             return map;
         }, {});
-
+        // update params if changed
         if (newCommentsParams.length) {
             for (let k in oldCommentsMap) {
                 if (!k in newCommentsMap) {
@@ -72,15 +72,13 @@ function updateComment(contract, commentLines, location) {
                 newCommentsParams,
                 isTab(contract.getOriginalLineAt(location.start.line - 1))
             );
-            for (let c of newCommentsParams.reverse()) {
-                let newComment = c;
-                let oldCommentParamName = c.trim().split(' ')[2];
+            for (let newComment of newCommentsParams.reverse()) {
+                let oldCommentParamName = newComment.trim().split(' ')[2];
                 let savedComment = savedComments[oldCommentParamName];
                 if (typeof savedComment !== "undefined") {
                     newComment = newComment + " " + savedComment;
                 }
                 contract.insertLinesBeforeWithoutCalculatingAndAddingOffset(newComment.split(), firstCommentLine);
-
             }
             contract.addOffset(firstCommentLine, newCommentsParams.length - oldCommentsParams.length);
             return true;
