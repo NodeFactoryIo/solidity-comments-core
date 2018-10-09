@@ -4,7 +4,7 @@ import CommentsGenerator from "../generators/comments-generator";
 const generator = new CommentsGenerator();
 
 export function insertComment(contract, node) {
-    let comment = generator.generate(node);
+    let comment = generator.generate(node).trim();
     if (!comment) return;
     let commentLines = comment.split('\n');
     if (updateComment(contract, commentLines, node.loc)) return;
