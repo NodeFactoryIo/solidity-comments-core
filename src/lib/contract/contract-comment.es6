@@ -1,4 +1,4 @@
-import { pad } from '../utils/string-utils';
+import {pad} from '../utils/string-utils';
 import CommentsGenerator from '../generators/comments-generator';
 
 // regexps
@@ -31,7 +31,7 @@ export class ContractComment {
       // extract old comments
       let oldCommentsParams = [];
       let oldCommentsMap = {};
-      let oldCommentPosition = line - 2;
+      let oldCommentPosition = line - 1;
       while (true) {
         let comment = this.contract.getLineAt(oldCommentPosition).trim();
         if (comment.startsWith('/**')) {
@@ -66,16 +66,12 @@ export class ContractComment {
       }, {});
       // update params if changed
       if (newCommentsParams.length) {
-        for (let k in oldCommentsMap) {
-          const c = !k;
-          if (c in newCommentsMap) {
-            return true;
-          }
+        if (Object.keys(oldCommentsMap).length !== Object.keys(newCommentsMap).length) {
+          return true;
         }
         let firstCommentLine = oldCommentsParams
           .reduce((min, b) => Math.min(min, b.line), oldCommentsParams[0].line);
-        // remove old params comments and save additional information about
-        // params
+        // remove old params comments and save addi. information about params
         let savedComments = {};
         for (let oldComment of oldCommentsParams) {
           this.contract.removeLine(firstCommentLine);
