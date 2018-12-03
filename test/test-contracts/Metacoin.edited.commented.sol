@@ -1,11 +1,18 @@
 pragma solidity ^0.4.24;
 
 
-/// @title MetaCoin v.2
+/**
+* Different type of comments
+* MetaCoin contract is used to....
+*/
 contract MetaCoin {
 
     /// @notice
     mapping (address => uint) balances;
+
+    // @notice
+    // This is multiline comment
+    mapping (address => uint) tokens;
 
     event Transfer(address _from,address _to, uint _amount);
 
@@ -14,6 +21,12 @@ contract MetaCoin {
     /// @return
     constructor() {
         balances[tx.origin] = 10000;
+    }
+
+    /// @param receiver
+    /// Another multiline comment, this one is about param receiver
+    function addToken(address receiver) public {
+        tokens[receiver] = tokens[receiver] + 1;
     }
 
     /// @notice
