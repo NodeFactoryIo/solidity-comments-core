@@ -1,5 +1,5 @@
 {
-  "name": "@doncesarts/solidity-comments-core",
+  "name": "@nodefactory/solidity-comments-core",
   "version": "1.2.0",
   "description": "",
   "main": "dist/index.js",
@@ -33,13 +33,10 @@
   ],
   "contributors": [
     "Belma Gutlić <belma@nodefactory.io>",
-    "Marin Petrunić <marin@nodefactory.io>",
-    "doncesarts <doncesarts@gmail.com>"
+    "Marin Petrunić <marin@nodefactory.io>"
   ],
   "license": "MIT",
   "devDependencies": {
-    "@abhijithvijayan/eslint-config": "2.6.3",
-    "@abhijithvijayan/eslint-config-airbnb": "^1.0.2",
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.8",
     "@babel/eslint-parser": "^7.12.16",
@@ -53,13 +50,16 @@
     "babel-tape-runner": "^3.0.0",
     "coveralls": "^3.1.1",
     "electron": "^18.0.2",
-    "eslint": "^7.11.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "^6.13.0",
     "eslint-config-strongloop": "^2.1.0",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "istanbul": "^0.4.5",
     "nyc": "^15.1.0",
     "prettier": "^2.6.2",
