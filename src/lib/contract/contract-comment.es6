@@ -34,10 +34,18 @@ export class ContractComment {
       let oldCommentPosition = line - 1;
       while (true) {
         let comment = this.contract.getLineAt(oldCommentPosition).trim();
-        if (comment.startsWith(parameterCommentRegex)) {
-          oldCommentsParams.push({line: oldCommentPosition, value: comment});
+        if (comment.startsWith('/**')) {
+          // multiline /** comments
+          return true;
+        } else if (comment.startsWith(parameterCommentRegex)) {
+          // param comments
+          oldCommentsParams.push({ line: oldCommentPosition, value: comment });
         } else if (comment.startsWith('//')) {
-          oldCommentsMap[comment.match(generatedCommentRegex)[0]] = comment;
+          // other comments
+          let matchedComment = comment.match(generatedCommentRegex);
+          if (matchedComment != null) {
+            oldCommentsMap[matchedComment[0]] = comment;
+          }
         } else if (!comment.startsWith('function')) {
           break;
         }
