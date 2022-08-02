@@ -88,10 +88,7 @@ export default class CommentsGenerator {
   }
 
   extractParamNames(item) {
-    let params = [];
-    item.parameters.parameters.forEach((paramObj) => {
-      params.push({name: paramObj.name});
-    });
-    return params;
+    const parameters = item.parameters.parameters ? item.parameters.parameters : item.parameters;
+    return parameters.map((p) => ({name: p.name}));
   }
 }
