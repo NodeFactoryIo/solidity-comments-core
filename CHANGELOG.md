@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2](https://github.com/NodeFactoryIo/solidity-comments-core/compare/v1.2.1...v1.2.2) (2022-08-02)
+
+
+### Miscellaneous
+
+* release 1.2.2 ([ab44753](https://github.com/NodeFactoryIo/solidity-comments-core/commit/ab44753215066b65036b2976d1c64b5a7b67f397))
+
 ## [1.2.1](https://github.com/NodeFactoryIo/solidity-comments-core/compare/v1.2.0...v1.2.1) (2022-08-02)
 
 
