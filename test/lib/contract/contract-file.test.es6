@@ -1,5 +1,7 @@
 import test from 'tape';
 import fs from 'fs';
+import os from 'os';
+import path from 'path';
 import { ContractFile } from '../../../src/lib/contract/contract-file';
 
 test('Assert not founding contract file', (t) => {
@@ -35,6 +37,8 @@ test('Save file', async(t) => {
   t.plan(1);
   let contract = new ContractFile('./test/test-contracts/Metacoin.sol');
   contract.insertTextBefore('test1\nbla', 'pragma solidity ^0.4.24;');
-  await contract.save('/tmp/Metacoin-test.sol');
-  t.notEqual(fs.readFileSync('/tmp/Metacoin-test.sol'), fs.readFileSync('./test/test-contracts/Metacoin.sol'));
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(),"solidity-comments-core"));
+  const filePath = path.join(tmp,'Metacoin-test.sol');
+  await contract.save(filePath);
+  t.notEqual(fs.readFileSync(filePath), fs.readFileSync('./test/test-contracts/Metacoin.sol'));
 });

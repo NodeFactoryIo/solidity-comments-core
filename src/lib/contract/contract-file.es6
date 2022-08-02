@@ -2,7 +2,7 @@ import * as path from 'path';
 import fs from 'fs';
 import { Contract } from './contract';
 
-export class ContractFile extends Contract{
+export class ContractFile extends Contract {
 
   constructor(filePath) {
     if (!fs.existsSync(filePath)) {
@@ -25,15 +25,7 @@ export class ContractFile extends Contract{
     if (!path) {
       path = this.path;
     }
-    return new Promise((resolve, reject) => {
-      let file = fs.createWriteStream(path);
-      file.on('error', function(err) { reject(err); });
-      this.lines.forEach((line) => {
-        file.write(line + '\n');
-      });
-      file.end();
-      resolve();
-    });
+    fs.writeFileSync(path, this.lines.join('\n'), { encoding: 'utf-8' });
   }
 
 }
